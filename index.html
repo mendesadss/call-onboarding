@@ -111,10 +111,11 @@ body {
 .module-chevron { color: var(--text-3); transition: transform .25s; flex-shrink: 0; }
 .module-card.open .module-chevron { transform: rotate(180deg); }
 
-.module-link { display: block; text-decoration: none; transition: border-color .2s, background .2s; }
-.module-link:hover { border-color: var(--accent); background: var(--surface-2); }
-.module-external { color: var(--text-3); flex-shrink: 0; transition: color .2s; }
-.module-link:hover .module-external { color: var(--accent); }
+.aula-link { text-decoration: none; transition: opacity .2s; }
+.aula-link .aula-title { color: var(--text); font-weight: 500; }
+.aula-link:hover .aula-title { color: var(--accent); }
+.aula-external { color: var(--text-3); margin-left: auto; flex-shrink: 0; transition: color .2s; }
+.aula-link:hover .aula-external { color: var(--accent); }
 
 .module-aulas { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .module-card.open .module-aulas { max-height: 900px; }
@@ -261,27 +262,30 @@ body {
 
     <div class="module-grid">
 
-      <a class="module-card module-link" href="https://coordinated-jonquil-021.notion.site/Global-Brand-30b5189f4fa581218e01d41cc76da513" target="_blank" rel="noopener">
-        <div class="module-header">
+      <div class="module-card">
+        <div class="module-header" onclick="toggleModule(this)">
           <div class="module-icon">📓</div>
           <div class="module-body">
-            <div class="module-name">Notion do Time</div>
-            <div class="module-desc">A central da operação da Global Brand: onde tudo fica organizado</div>
+            <div class="module-name">Apresentação do Notion</div>
+            <div class="module-desc">Onde a operação fica organizada e o passo a passo pra executar</div>
           </div>
-          <svg class="module-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-      </a>
-
-      <a class="module-card module-link" href="https://coordinated-jonquil-021.notion.site/CHECKLIST-DE-EXECU-O-3375189f4fa580218208d3a55109752b" target="_blank" rel="noopener">
-        <div class="module-header">
-          <div class="module-icon">✅</div>
-          <div class="module-body">
-            <div class="module-name">Checklist de Execução</div>
-            <div class="module-desc">O passo a passo do que fazer, na ordem certa, pra tirar a operação do papel</div>
+        <div class="module-aulas">
+          <div class="aula-list">
+            <a class="aula-row aula-link" href="https://coordinated-jonquil-021.notion.site/Global-Brand-30b5189f4fa581218e01d41cc76da513" target="_blank" rel="noopener">
+              <span class="aula-n">01</span>
+              <span class="aula-title">Notion da Operação</span>
+              <svg class="aula-external" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a class="aula-row aula-link" href="https://coordinated-jonquil-021.notion.site/CHECKLIST-DE-EXECU-O-3375189f4fa580218208d3a55109752b" target="_blank" rel="noopener">
+              <span class="aula-n">02</span>
+              <span class="aula-title">Checklist de Execução</span>
+              <svg class="aula-external" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
           </div>
-          <svg class="module-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </div>
-      </a>
+      </div>
 
       <div class="module-card">
         <div class="module-header" onclick="toggleModule(this)">
