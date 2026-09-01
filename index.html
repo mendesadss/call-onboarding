@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Call de Onboarding | GlobalBrand</title>
+<title>Call de Onboarding – GlobalBrand</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
@@ -55,7 +55,7 @@ body {
 .view.active { display: block; animation: fade .25s ease; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ===== ROTEIRO (aba do Mikael) ===== */
+/* ===== ROTEIRO (aba de quem conduz) ===== */
 .timer-track { display: flex; gap: 3px; margin-top: 22px; border-radius: 4px; overflow: hidden; height: 4px; }
 .timer-seg { flex: 1; background: var(--surface-2); transition: background .3s; }
 .timer-seg.done { background: var(--accent); }
@@ -93,11 +93,22 @@ body {
 .present-hero { padding: 28px 0 26px; border-bottom: 1px solid var(--border); margin-bottom: 26px; }
 .present-hero h2 { font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-weight: 400; font-size: 40px; color: var(--text); letter-spacing: 0.01em; }
 .present-hero p { color: var(--text-2); font-size: 14px; margin-top: 8px; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; background: var(--accent); color: #000; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; text-decoration: none; padding: 12px 22px; border-radius: 999px; transition: filter .15s; }
+.hero-cta:hover { filter: brightness(1.08); }
 
 .focus-banner { display: flex; gap: 12px; align-items: flex-start; background: var(--white-box-bg); border-radius: var(--r); padding: 16px 20px; margin-bottom: 26px; }
 .focus-banner .ic { font-size: 18px; flex-shrink: 0; }
 .focus-banner p { color: var(--white-box-fg); font-size: 14px; line-height: 1.6; }
 .focus-banner strong { font-weight: 800; color: var(--accent-mid, #4E7A24); }
+
+.phase-group { margin-top: 34px; }
+.phase-group:first-of-type { margin-top: 0; }
+.phase-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.phase-tag { font-family: 'Bebas Neue', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: #000; background: var(--accent); padding: 5px 13px; border-radius: 999px; flex-shrink: 0; }
+.phase-name { font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 22px; letter-spacing: 0.01em; color: var(--text); }
+.phase-desc { font-size: 12.5px; color: var(--text-2); margin-top: 2px; }
+.phase-group.bonus .phase-tag { background: var(--white-box-bg); color: #000; }
+.phase-group.bonus .module-card { border-style: dashed; }
 
 .module-grid { display: flex; flex-direction: column; gap: 14px; }
 .module-card { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
@@ -108,27 +119,21 @@ body {
 .module-body { flex: 1; }
 .module-name { font-family: 'Bebas Neue', sans-serif; text-transform: uppercase; font-size: 21px; letter-spacing: 0.01em; color: var(--text); }
 .module-desc { font-size: 13px; color: var(--text-2); margin-top: 3px; }
+.module-count { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--white-box-fg); background: var(--white-box-bg); padding: 5px 11px; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+.module-card.highlight .module-count { background: var(--accent); }
 .module-chevron { color: var(--text-3); transition: transform .25s; flex-shrink: 0; }
 .module-card.open .module-chevron { transform: rotate(180deg); }
 
-.aula-link { text-decoration: none; transition: opacity .2s; }
-.aula-link .aula-title { color: var(--text); font-weight: 500; }
-.aula-link:hover .aula-title { color: var(--accent); }
-.aula-external { color: var(--text-3); margin-left: auto; flex-shrink: 0; transition: color .2s; }
-.aula-link:hover .aula-external { color: var(--accent); }
-
 .module-aulas { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .module-card.open .module-aulas { max-height: 900px; }
-.aula-list { padding: 4px 24px 20px; display: flex; flex-direction: column; }
-.aula-row { display: flex; align-items: baseline; gap: 12px; padding: 9px 0; border-top: 1px solid var(--border); }
-.aula-n { font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--accent); width: 20px; flex-shrink: 0; text-align: right; }
-.aula-title { font-size: 13.5px; color: var(--text-2); }
+.module-summary { padding: 4px 24px 22px; font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
 
 @media(max-width:600px){
   .app { padding: 24px 16px 50px; }
   .header h1 { font-size: 32px; }
   .present-hero h2 { font-size: 30px; }
   .module-header { flex-wrap: wrap; }
+  .module-count { order: -1; }
   .aula-list { padding: 4px 16px 18px; }
 }
 </style>
@@ -138,7 +143,7 @@ body {
 
 <div class="header">
   <h1>Call de <em>Onboarding</em></h1>
-  <p class="header-sub">Mentoria GlobalBrand · Drop Global</p>
+  <p class="header-sub">Mentoria GlobalBrand – Drop Global</p>
   <div class="tabs">
     <button class="tab-btn active" data-view="roteiro" onclick="switchTab(this)">Meu Roteiro</button>
     <button class="tab-btn" data-view="apresentar" onclick="switchTab(this)">Apresentar pro Aluno</button>
@@ -164,7 +169,7 @@ body {
       <div class="block-num">1</div>
       <div class="block-info">
         <div class="block-title">Boas-vindas &amp; quebra-gelo</div>
-        <div class="block-meta">0 a 2 min</div>
+        <div class="block-meta">0–2 min</div>
       </div>
       <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
@@ -183,16 +188,16 @@ body {
       <div class="block-num">2</div>
       <div class="block-info">
         <div class="block-title">Diagnóstico do mentorado</div>
-        <div class="block-meta">2 a 6 min</div>
+        <div class="block-meta">2–6 min</div>
       </div>
       <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
     <div class="block-body">
       <div class="topic-list">
-        <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Puxar o que ele já contou pro Pedro na call de fechamento<span class="topic-sub">Não perguntar tudo do zero: mostra que você já chegou com contexto</span></span></label>
+        <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Puxar o que ele já contou pro Paulo na call de fechamento<span class="topic-sub">Não perguntar tudo do zero – mostra que você já chegou com contexto</span></span></label>
         <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Entender nível de experiência<span class="topic-sub">Nunca vendeu / já vende e quer escalar</span></span></label>
         <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Entender contexto: tempo disponível, expectativa, maior receio</span></label>
-        <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Deixar ele falar, escutar mais do que falar</span></label>
+        <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Deixar ele falar – escutar mais do que falar</span></label>
       </div>
     </div>
   </div>
@@ -203,7 +208,7 @@ body {
       <div class="block-num">3</div>
       <div class="block-info">
         <div class="block-title">Como vai funcionar na prática</div>
-        <div class="block-meta">6 a 10 min</div>
+        <div class="block-meta">6–10 min</div>
       </div>
       <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
@@ -223,19 +228,19 @@ body {
       <div class="block-num">4</div>
       <div class="block-info">
         <div class="block-title">Apresentação do conteúdo</div>
-        <div class="block-meta">10 a 15 min</div>
+        <div class="block-meta">10–15 min</div>
       </div>
       <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
     <div class="block-body">
       <div class="topic-list">
-        <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Compartilhar tela e abrir a aba "Apresentar pro Aluno"</span></label>
+        <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Compartilhar tela – abrir a aba "Apresentar pro Aluno"</span></label>
         <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Mostrar a jornada completa</span></label>
         <label class="topic-item"><input type="checkbox" onchange="toggleTopic(this)"><span>Direcionar o foco pras Mentorias ao Vivo<span class="topic-sub">É onde o conteúdo está mais forte agora</span></span></label>
       </div>
       <div class="note-row">
         <div class="note-icon">!</div>
-        <div>As aulas gravadas tradicionais estão sendo refeitas (nova área de membros em construção). Evite empurrar essas aulas, principalmente pro aluno mais experiente: corre o risco de confundir ao invés de ajudar.</div>
+        <div>As aulas gravadas tradicionais estão sendo refeitas (nova área de membros em construção). Evite empurrar essas aulas, principalmente pro aluno mais experiente – corre o risco de confundir ao invés de ajudar.</div>
       </div>
     </div>
   </div>
@@ -252,137 +257,292 @@ body {
 
     <div class="present-hero">
       <h2>Sua Jornada</h2>
-      <p>O caminho dentro da GlobalBrand, do zero até a operação rodando</p>
+      <p>O caminho dentro da GlobalBrand, do zero até a operação rodando – 4 fases, 12 módulos</p>
+      <a class="hero-cta" href="https://mendesadss.com/?modo=aluno" target="_blank" rel="noopener">Abrir a área de membros →</a>
     </div>
 
     <div class="focus-banner">
       <span class="ic">💡</span>
-      <p><strong>O conteúdo está sendo reconstruído.</strong> Por isso, agora, o caminho mais rápido pra você sair aplicando é acompanhar as Mentorias ao Vivo: é ali que o conteúdo está mais forte no momento.</p>
+      <p>Você vai avançar por essas fases nessa ordem: primeiro a fundação técnica, depois a decisão de mercado, a construção da operação e por último a venda de verdade. Cada fase te deixa pronto pra próxima.</p>
     </div>
 
-    <div class="module-grid">
-
-      <div class="module-card">
-        <div class="module-header" onclick="toggleModule(this)">
-          <div class="module-icon">📓</div>
-          <div class="module-body">
-            <div class="module-name">Apresentação do Notion</div>
-            <div class="module-desc">Onde a operação fica organizada e o passo a passo pra executar</div>
-          </div>
-          <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="module-aulas">
-          <div class="aula-list">
-            <a class="aula-row aula-link" href="https://coordinated-jonquil-021.notion.site/Global-Brand-30b5189f4fa581218e01d41cc76da513" target="_blank" rel="noopener">
-              <span class="aula-n">01</span>
-              <span class="aula-title">Notion da Operação</span>
-              <svg class="aula-external" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a class="aula-row aula-link" href="https://coordinated-jonquil-021.notion.site/CHECKLIST-DE-EXECU-O-3375189f4fa580218208d3a55109752b" target="_blank" rel="noopener">
-              <span class="aula-n">02</span>
-              <span class="aula-title">Checklist de Execução</span>
-              <svg class="aula-external" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
+    <!-- FASE 1 -->
+    <div class="phase-group">
+      <div class="phase-head">
+        <span class="phase-tag">Fase 1</span>
+        <div>
+          <div class="phase-name">Preparar</div>
+          <div class="phase-desc">Instalar as ferramentas e montar a cabeça de operador</div>
         </div>
       </div>
+      <div class="module-grid">
 
-      <div class="module-card">
-        <div class="module-header" onclick="toggleModule(this)">
-          <div class="module-icon">🌎</div>
-          <div class="module-body">
-            <div class="module-name">Mercado de Drop Global</div>
-            <div class="module-desc">Como funciona o mercado global e a metodologia</div>
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🧭</div>
+            <div class="module-body">
+              <div class="module-name">Ponto de Partida e Setup</div>
+              <div class="module-desc">Instalar as ferramentas que fazem o trabalho pesado</div>
+            </div>
+            <div class="module-count">6 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="module-aulas">
+            <p class="module-summary">Você instala o Claude Code e as duas skills que vão fazer o trabalho pesado da sua operação: a /raio-x, que faz a pesquisa de mercado, e a /montar-loja, que constrói a loja. Sai daqui sabendo exatamente quanto custa começar e com o ambiente rodando.</p>
+          </div>
         </div>
-        <div class="module-aulas">
-          <div class="aula-list">
-            <div class="aula-row"><span class="aula-n">01</span><span class="aula-title">Como funciona o mercado global</span></div>
-            <div class="aula-row"><span class="aula-n">02</span><span class="aula-title">Qual é a base da metodologia</span></div>
-            <div class="aula-row"><span class="aula-n">03</span><span class="aula-title">Melhores nichos e mercados</span></div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🗂️</div>
+            <div class="module-body">
+              <div class="module-name">Sistema de Execução</div>
+              <div class="module-desc">Organizar a operação e não travar sozinho</div>
+            </div>
+            <div class="module-count">3 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
+          <div class="module-aulas">
+            <p class="module-summary">Como organizar a operação inteira dentro do Notion e avançar por etapa sem travar. Você aprende a resolver sozinho com a IA o que for possível, e a identificar rápido quando o caso é pra trazer numa call.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="phase-group">
+      <div class="phase-head">
+        <span class="phase-tag">Fase 2</span>
+        <div>
+          <div class="phase-name">Decidir</div>
+          <div class="phase-desc">A IA faz a pesquisa, você trava a estratégia</div>
         </div>
       </div>
+      <div class="module-grid">
 
-      <div class="module-card">
-        <div class="module-header" onclick="toggleModule(this)">
-          <div class="module-icon">🧱</div>
-          <div class="module-body">
-            <div class="module-name">Iniciando a Estrutura</div>
-            <div class="module-desc">Nicho, produto, branding e oferta</div>
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🌍</div>
+            <div class="module-body">
+              <div class="module-name">Entendendo o Mercado de Drop Global</div>
+              <div class="module-desc">Como o dinheiro gira no mercado global</div>
+            </div>
+            <div class="module-count">3 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="module-aulas">
+            <p class="module-summary">A base pra entender o modelo antes de decidir qualquer coisa: como o caixa gira, a conta do negócio (markup, CPA, os países certos pra vender) e como analisar uma loja de sucesso antes de construir a sua.</p>
+          </div>
         </div>
-        <div class="module-aulas">
-          <div class="aula-list">
-            <div class="aula-row"><span class="aula-n">01</span><span class="aula-title">Escolha do nicho e subnicho</span></div>
-            <div class="aula-row"><span class="aula-n">02</span><span class="aula-title">Validação do nicho: pesquisa e estudo de mercado</span></div>
-            <div class="aula-row"><span class="aula-n">03</span><span class="aula-title">Template do Notion (link)</span></div>
-            <div class="aula-row"><span class="aula-n">04</span><span class="aula-title">Escolha de produtos</span></div>
-            <div class="aula-row"><span class="aula-n">05</span><span class="aula-title">Pesquisa e posicionamento de marca</span></div>
-            <div class="aula-row"><span class="aula-n">06</span><span class="aula-title">Construção de branding e posicionamento</span></div>
-            <div class="aula-row"><span class="aula-n">07</span><span class="aula-title">Finalização do branding</span></div>
-            <div class="aula-row"><span class="aula-n">08</span><span class="aula-title">Criação de oferta</span></div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🔍</div>
+            <div class="module-body">
+              <div class="module-name">Pesquisa e Plano de Ação com /raio-x</div>
+              <div class="module-desc">A IA faz a pesquisa e entrega um plano de ação</div>
+            </div>
+            <div class="module-count">5 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
+          <div class="module-aulas">
+            <p class="module-summary">Aqui a /raio-x assume a pesquisa: ela lê o mercado, rankeia lojas de referência e te entrega um plano de ação completo, com nicho, fornecedor e oferta sugeridos. Você lê o plano e decide o que aceitar.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">📋</div>
+            <div class="module-body">
+              <div class="module-name">Do Plano ao Brief</div>
+              <div class="module-desc">Validar fornecedor e travar o brief da marca</div>
+            </div>
+            <div class="module-count">4 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="module-aulas">
+            <p class="module-summary">Validar o fornecedor, a qualidade e o preço que o plano trouxe, ajustar o posicionamento e travar o brief final da marca. É esse documento que libera a construção da identidade visual.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="phase-group">
+      <div class="phase-head">
+        <span class="phase-tag">Fase 3</span>
+        <div>
+          <div class="phase-name">Construir</div>
+          <div class="phase-desc">Marca pronta, loja no ar, dinheiro entrando antes do tráfego</div>
         </div>
       </div>
+      <div class="module-grid">
 
-      <div class="module-card">
-        <div class="module-header" onclick="toggleModule(this)">
-          <div class="module-icon">🏗️</div>
-          <div class="module-body">
-            <div class="module-name">Construindo Estrutura na Shopify</div>
-            <div class="module-desc">Loja pronta pra vender, do zero à precificação</div>
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🎨</div>
+            <div class="module-body">
+              <div class="module-name">Identidade Visual e Materiais com IA</div>
+              <div class="module-desc">Nome, logo, imagens e banners com IA</div>
+            </div>
+            <div class="module-count">4 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="module-aulas">
+            <p class="module-summary">A partir do brief, a marca ganha nome, tom de voz e logo. Você também gera e trata as imagens de produto com IA e cria os banners que abrem a loja.</p>
+          </div>
         </div>
-        <div class="module-aulas">
-          <div class="aula-list">
-            <div class="aula-row"><span class="aula-n">01</span><span class="aula-title">Criar conta na Shopify</span></div>
-            <div class="aula-row"><span class="aula-n">02</span><span class="aula-title">Instalando tema</span></div>
-            <div class="aula-row"><span class="aula-n">03</span><span class="aula-title">Definir nome da loja</span></div>
-            <div class="aula-row"><span class="aula-n">04</span><span class="aula-title">Criação da logo</span></div>
-            <div class="aula-row"><span class="aula-n">05</span><span class="aula-title">Cadastrar produto</span></div>
-            <div class="aula-row"><span class="aula-n">06</span><span class="aula-title">Otimização do tema</span></div>
-            <div class="aula-row"><span class="aula-n">07</span><span class="aula-title">Otimização do tema, parte 2</span></div>
-            <div class="aula-row"><span class="aula-n">08</span><span class="aula-title">Otimização da página de produto</span></div>
-            <div class="aula-row"><span class="aula-n">09</span><span class="aula-title">Copy da página de produto</span></div>
-            <div class="aula-row"><span class="aula-n">10</span><span class="aula-title">Personalizar carrinho</span></div>
-            <div class="aula-row"><span class="aula-n">11</span><span class="aula-title">Menus, rodapé e políticas de privacidade</span></div>
-            <div class="aula-row"><span class="aula-n">12</span><span class="aula-title">Personalizar checkout e e-mail</span></div>
-            <div class="aula-row"><span class="aula-n">13</span><span class="aula-title">Custo de produto e precificação</span></div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🏗️</div>
+            <div class="module-body">
+              <div class="module-name">Criando a Estrutura</div>
+              <div class="module-desc">A loja construída do zero com a IA</div>
+            </div>
+            <div class="module-count">14 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
+          <div class="module-aulas">
+            <p class="module-summary">A loja é construída na Shopify com a ajuda da IA, do catálogo e das coleções até a copy, a home e a página de produto. Termina com uma revisão crítica de tudo antes de ligar qualquer anúncio.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">💳</div>
+            <div class="module-body">
+              <div class="module-name">Recebimento: Stripe e PayPal</div>
+              <div class="module-desc">Como o dinheiro entra antes do tráfego</div>
+            </div>
+            <div class="module-count">4 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="module-aulas">
+            <p class="module-summary">Resolver como o dinheiro entra antes de gastar um real em tráfego: Stripe e PayPal configurados, vinculados à loja e testados com um pedido real.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="phase-group">
+      <div class="phase-head">
+        <span class="phase-tag">Fase 4</span>
+        <div>
+          <div class="phase-name">Vender</div>
+          <div class="phase-desc">Credibilidade no ar, tráfego ligado, dados reais guiando a escala</div>
         </div>
       </div>
+      <div class="module-grid">
 
-      <div class="module-card highlight">
-        <div class="module-header" onclick="toggleModule(this)">
-          <div class="module-icon">🎥</div>
-          <div class="module-body">
-            <div class="module-name">Mentorias ao Vivo</div>
-            <div class="module-desc">Pesquisa de mercado, tráfego pago, oferta, loja e mais, direto com quem já fez</div>
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">📱</div>
+            <div class="module-body">
+              <div class="module-name">Redes Sociais</div>
+              <div class="module-desc">Credibilidade no Instagram antes de anunciar</div>
+            </div>
+            <div class="module-count">6 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
-          <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <div class="module-aulas">
+            <p class="module-summary">Montar um Instagram e uma fan page que passam credibilidade pro cliente que for conferir seu perfil antes de comprar, mesmo antes do primeiro anúncio rodar.</p>
+          </div>
         </div>
-        <div class="module-aulas">
-          <div class="aula-list">
-            <div class="aula-row"><span class="aula-n">01</span><span class="aula-title">Pesquisa de mercado</span></div>
-            <div class="aula-row"><span class="aula-n">02</span><span class="aula-title">Transformando produtos comuns em lucro</span></div>
-            <div class="aula-row"><span class="aula-n">03</span><span class="aula-title">Página de vendas de alta conversão e oferta</span></div>
-            <div class="aula-row"><span class="aula-n">04</span><span class="aula-title">Meta Ads: do zero ao primeiro anúncio</span></div>
-            <div class="aula-row"><span class="aula-n">05</span><span class="aula-title">Oferta e precificação</span></div>
-            <div class="aula-row"><span class="aula-n">06</span><span class="aula-title">Como montar um Instagram que passa credibilidade e converte</span></div>
-            <div class="aula-row"><span class="aula-n">07</span><span class="aula-title">Estrutura de loja e página de produto</span></div>
-            <div class="aula-row"><span class="aula-n">08</span><span class="aula-title">Análise de loja e tira-dúvidas</span></div>
-            <div class="aula-row"><span class="aula-n">09</span><span class="aula-title">Meta Ads e estrutura inicial de campanhas</span></div>
-            <div class="aula-row"><span class="aula-n">10</span><span class="aula-title">Como criar página de produto com Inteligência Artificial</span></div>
-            <div class="aula-row"><span class="aula-n">11</span><span class="aula-title">Como criar boas imagens com Inteligência Artificial</span></div>
-            <div class="aula-row"><span class="aula-n">12</span><span class="aula-title">Como criar estrutura de Google Ads</span></div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">📣</div>
+            <div class="module-body">
+              <div class="module-name">Meta Ads</div>
+              <div class="module-desc">Estrutura de campanha e a primeira venda no Meta</div>
+            </div>
+            <div class="module-count">5 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
+          <div class="module-aulas">
+            <p class="module-summary">Estrutura de campanha, pixel instalado e a primeira campanha subindo ao vivo no Meta Ads, com os criativos certos pra segmentar.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">📈</div>
+            <div class="module-body">
+              <div class="module-name">Lançamento, Leitura e Escala</div>
+              <div class="module-desc">Ler os dados reais e decidir escalar</div>
+            </div>
+            <div class="module-count">6 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="module-aulas">
+            <p class="module-summary">Ler as métricas reais da campanha rodando, diagnosticar se o gargalo é criativo, site ou oferta, e decidir com dado na mão entre escalar, iterar ou matar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MENTORIA AO VIVO -->
+    <div class="phase-group live">
+      <div class="phase-head">
+        <span class="phase-tag">Contínuo</span>
+        <div>
+          <div class="phase-name">Mentoria ao Vivo</div>
+          <div class="phase-desc">Calls semanais em grupo, gravadas e disponíveis a qualquer momento</div>
         </div>
       </div>
+      <div class="module-grid">
 
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🎥</div>
+            <div class="module-body">
+              <div class="module-name">Mentoria ao Vivo</div>
+              <div class="module-desc">Aprofundamento em grupo, toda semana</div>
+            </div>
+            <div class="module-count">Toda semana</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="module-aulas">
+            <p class="module-summary">Além da trilha, você tem as Mentorias ao Vivo: calls semanais em grupo pra aprofundar temas que pedem mais prática, como criativos com IA, tráfego pago e leitura de dados reais. Toda call é gravada e fica disponível aqui na área de membros pra você rever quando quiser.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BÔNUS -->
+    <div class="phase-group bonus">
+      <div class="phase-head">
+        <span class="phase-tag">Bônus</span>
+        <div>
+          <div class="phase-name">Google Ads</div>
+          <div class="phase-desc">Fora da trilha principal, uma segunda fonte de tráfego</div>
+        </div>
+      </div>
+      <div class="module-grid">
+
+        <div class="module-card">
+          <div class="module-header" onclick="toggleModule(this)">
+            <div class="module-icon">🎯</div>
+            <div class="module-body">
+              <div class="module-name">Google Ads</div>
+              <div class="module-desc">A segunda fonte de tráfego, via busca</div>
+            </div>
+            <div class="module-count">4 aulas</div>
+            <svg class="module-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="module-aulas">
+            <p class="module-summary">Sua segunda fonte de tráfego, capturando quem já está procurando o que você vende no Google.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
