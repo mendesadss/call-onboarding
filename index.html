@@ -55,7 +55,7 @@ body {
 .view { display: none; }
 .view.active { display: block; animation: fade .25s ease; }
 .view#view-roteiro { max-width: 900px; margin: 0 auto; }
-.view#view-apresentar { max-width: 1600px; margin: 0 auto; }
+.view#view-apresentar { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ===== ROTEIRO (aba do Mikael) ===== */
@@ -138,6 +138,7 @@ body {
 
 @media(max-width:600px){
   .app { padding: 24px 16px 50px; }
+  .view#view-apresentar { padding: 0; }
   .header h1 { font-size: 32px; }
   .present-hero h2 { font-size: 30px; }
   .module-header { flex-wrap: wrap; }
